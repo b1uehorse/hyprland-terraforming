@@ -1,0 +1,62 @@
+" === Colemak-DH MNEI Navigation ===
+
+" скроллинг (MNEI = HJKL)
+bind m scrollpx -50
+bind n scrollline 5
+bind e scrollline -5
+bind i scrollpx 50
+
+" полстраницы
+bind N scrollpage 0.5
+bind E scrollpage -0.5
+
+" начало/конец страницы
+bind gg scrollto 0
+bind G scrollto 100
+
+" переназначение затёртых клавиш (как в neovim)
+" h → insert (focusinput)
+bind h focusinput
+
+" j → mark
+bind j markadd
+
+" k → next search
+bind k findnext
+bind K findnext --reverse
+
+" вкладки (H/L — как top/bottom screen в vim)
+bind H tabprev
+bind L tabnext
+
+" история
+bind M back
+bind <C-m> forward
+
+" hint mode — буквы под Colemak home row
+set hintchars arstwfuyneio
+
+" поисковики
+set searchengine google
+bind o fillcmdline open
+bind O fillcmdline tabopen
+
+set searchurls.g https://www.google.com/search?q=
+set searchurls.y https://www.youtube.com/results?search_query=
+set searchurls.gh https://github.com/search?q=
+set searchurls.aw https://wiki.archlinux.org/index.php?search=
+
+" editor integration
+set editorcmd kitty -e nvim %f
+
+" внешний вид
+set theme dark
+
+" убрать mode indicator
+set modeindicator false
+
+" smooth scroll
+set smoothscroll true
+
+" шрифт командной строки
+set cmdlinefontsize 18

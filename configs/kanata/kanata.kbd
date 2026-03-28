@@ -1,0 +1,17 @@
+(defcfg
+  process-unmapped-keys yes
+  log-layer-changes no
+)
+
+(defsrc
+  f15  f16  f17  f18
+)
+
+(deflayer default
+  f15  f16  @cpy @pst
+)
+
+(defalias
+  cpy (multi lctl c)
+  pst (multi lctl b)
+)

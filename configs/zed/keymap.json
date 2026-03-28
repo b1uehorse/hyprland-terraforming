@@ -1,0 +1,48 @@
+[
+  // Colemak-DH: MNEI navigation (like HJKL)
+  // Vim Normal & Visual modes
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      // Navigation: MNEI → HJKL
+      "m": "vim::Left",
+      "n": "vim::Down",
+      "e": "vim::Up",
+      "i": "vim::Right",
+
+      // Displaced keys
+      "h": "vim::InsertBefore",
+      "shift-h": "vim::InsertFirstNonWhitespace",
+      "k": "vim::MoveToNext",
+      "shift-k": "vim::MoveToPrev",
+      "l": "vim::MoveToEndOfWord",
+      "shift-l": "vim::MoveToEndOfLongWord",
+      "j": "vim::Mark",
+
+      // Window navigation (Ctrl+MNEI)
+      "ctrl-m": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-n": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-e": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-i": ["workspace::ActivatePaneInDirection", "Right"]
+    }
+  },
+  // Vim Visual mode specifics
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "m": "vim::Left",
+      "n": "vim::Down",
+      "e": "vim::Up",
+      "i": "vim::Right"
+    }
+  },
+  // Insert mode — keep defaults, no remaps needed
+  // Editor-wide (non-vim) navigation
+  {
+    "context": "Editor && !menu",
+    "bindings": {
+      "ctrl-shift-m": "editor::MoveToPreviousWordStart",
+      "ctrl-shift-i": "editor::MoveToNextWordEnd"
+    }
+  }
+]
