@@ -80,6 +80,61 @@ bind = , XF86Launch7, exec, hyprctl switchxkblayout all 1  # Русский
 переключение детерминированное — конкретная клавиша = конкретная раскладка,
 не toggle. XF86Launch6/7 приходят напрямую с Lily58, kanata их пропускает.
 
+## уровень 4: Hyprland keybinds (тайлинг)
+
+все бинды через `code:` (XKB keycode = evdev + 8), поэтому работают
+одинаково на **EN и RU** раскладках.
+
+```
+# Физ. QWERTY:  q  w  e  r  t    y  u  i  o  p
+# Colemak-DH:   q  w  f  p  b    j  l  u  y  ;
+# XKB keycode: 24 25 26 27 28   29 30 31 32 33
+#
+# Физ. QWERTY:  a  s  d  f  g    h  j  k  l  ;
+# Colemak-DH:   a  r  s  t  g    m  n  e  i  o
+# XKB keycode: 38 39 40 41 42   43 44 45 46 47
+#
+# Физ. QWERTY:  z  x  c  v  b    n  m
+# Colemak-DH:   z  x  c  d  v    k  h
+# XKB keycode: 52 53 54 55 56   57 58
+```
+
+### управление окнами
+
+| комбо | физ. клавиша (QWERTY) | Colemak-DH | действие |
+|---|---|---|---|
+| Super + code:24 | Q | Q | закрыть окно |
+| Super + code:25 | W | W | терминал |
+| Super + code:26 | E | **F** | фуллскрин |
+| Super + code:27 | R | **P** | pseudo-tile |
+| Super + code:39 | S | **R** | лаунчер |
+| Super + code:40 | D | **S** | скрэтчпад |
+| Super + code:41 | F | **T** | toggle split |
+| Super + code:56 | B | **V** | плавающее окно |
+| Super+Shift + code:24 | Q | Q | выход из Hyprland |
+| Alt + Space | — | — | лаунчер (альт.) |
+
+### навигация MNEI (физ. HJKL)
+
+| модификатор | M (code:43) | N (code:44) | E (code:45) | I (code:46) |
+|---|---|---|---|---|
+| Super | фокус влево | фокус вниз | фокус вверх | фокус вправо |
+| Super+Shift | двинуть влево | двинуть вниз | двинуть вверх | двинуть вправо |
+| Super+Ctrl | ресайз ← | ресайз ↓ | ресайз ↑ | ресайз → |
+
+стрелки тоже работают как фоллбэк (Super + ←↓↑→).
+
+### воркспейсы
+
+- Super + 1-0 → переключить воркспейс (code:10–19)
+- Super + Shift + 1-0 → переместить окно в воркспейс
+- Super + scroll → листать воркспейсы
+
+### мышь
+
+- Super + ЛКМ → перетаскивание окна
+- Super + ПКМ → ресайз окна
+
 ## полный пайплайн
 
 ```
@@ -91,7 +146,9 @@ Lily58 (ZMK)
 ├─ F18 → evdev → kanata → Ctrl+KEY_B → XKB → Ctrl+V (paste)
 │
 ├─ XF86Launch6 → evdev → kanata (pass) → Hyprland → layout 0 (EN)
-└─ XF86Launch7 → evdev → kanata (pass) → Hyprland → layout 1 (RU)
+├─ XF86Launch7 → evdev → kanata (pass) → Hyprland → layout 1 (RU)
+│
+└─ Super+code:XX → Hyprland bind → тайлинг (layout-independent)
 ```
 
 ## мёртвые компоненты
